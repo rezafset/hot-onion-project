@@ -3,9 +3,11 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import {getDatabaseCart, removeFromDatabaseCart} from '../../utilities/databaseManager';
 import fakeData from '../../fakeData';
 import FoodOrder from '../FoodOrder/FoodOrder';
+import { useAuthentication } from '../Login/UseAuth';
 
 const Shipment = () => {
     const [cart, setCart] = useState([])
+    const auth = useAuthentication();
 
     useEffect(()=>{
         const saveCart = getDatabaseCart();
@@ -43,10 +45,10 @@ const Shipment = () => {
                     <h2 className="text-center">Delivery Detail</h2>
                     <Form className="pt-3">
                         <Form.Group controlId="formBasicUsername">
-                            <Form.Control type="text" placeholder="Enter Name" required />
+                            <Form.Control type="text" name="name" defaultValue={auth.user.displayName} placeholder="Enter Name" required />
                         </Form.Group>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Control type="email" placeholder="Enter email" required />
+                            <Form.Control type="email" name="email" defaultValue={auth.user.email} placeholder="Enter email" required />
                         </Form.Group>
                         <Form.Group controlId="formBasicPhone">
                             <Form.Control type="text" placeholder="Enter Mobile Number" required />

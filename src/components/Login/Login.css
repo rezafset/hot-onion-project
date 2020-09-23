@@ -3,8 +3,10 @@
     justify-content: center;
     margin-top: 150px;
 }
-
 .login{
     width: 400px;
+}
+.error{
+    color: red;
 }
 

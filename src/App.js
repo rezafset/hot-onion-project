@@ -14,16 +14,17 @@ import Login from './components/Login/Login';
 import FoodContainer from './components/FoodContainer/FoodContainer';
 import FoodInfo from './components/FoodInfo/FoodInfo';
 import Shipment from './components/Shipment/Shipment';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { AuthContextProvider } from './components/Login/UseAuth';
 
 function App() {
-  // console.log(fakeData);
+
   const [foods, setFoods] = useState(fakeData);
   const [cart, setCart] = useState([]);
   
   useEffect(()=>{
     const saveCart = getDatabaseCart();
     const foodKey = Object.keys(saveCart);
-    // console.log(foodKey);
     if(foods.length){
       const foodItem = foodKey.map(key=>{
         const food = fakeData.find(fd => fd.key === key);
@@ -54,25 +55,28 @@ function App() {
   }
 
   return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <Login></Login>
-        </Route>
-        <Route exact path="/">
-            <Header cart ={cart}></Header>
-            <FoodContainer handleFoodCart={handleFoodCart} cart={cart}></FoodContainer>
-        </Route>
-        <Route path="/food/:foodKey">
-            <Header cart ={cart}></Header>
-            <FoodInfo></FoodInfo>
-        </Route>
-        <Route path="/shipment">
-          <Header cart={cart}></Header>
-          <Shipment></Shipment>
-        </Route>
-      </Switch>
-    </Router>
+    <AuthContextProvider>
+      <Router>
+        <Switch>
+          <Route path="/login">
+          <Header cart ={cart}></Header>
+            <Login></Login>
+          </Route>
+          <Route exact path="/">
+              <Header cart ={cart}></Header>
+              <FoodContainer handleFoodCart={handleFoodCart} cart={cart}></FoodContainer>
+          </Route>
+          <Route path="/food/:foodKey">
+              <Header cart ={cart}></Header>
+              <FoodInfo></FoodInfo>
+          </Route>
+          <PrivateRoute path="/shipment">
+            <Header cart={cart}></Header>
+            <Shipment></Shipment>
+          </PrivateRoute>
+        </Switch>
+      </Router>
+    </AuthContextProvider>
   );
 }
 
