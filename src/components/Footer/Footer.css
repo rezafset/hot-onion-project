@@ -1,0 +1,12 @@
+.footer-img{
+    height: 55px;
+    width: 180px;
+}
+.list-group .href:hover{
+    text-decoration: none;
+}
+.me:hover{
+    text-decoration: none;
+    color: #ED4A50
+}
+

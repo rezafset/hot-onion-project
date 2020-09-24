@@ -3,16 +3,17 @@ import { Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons';
 import { useAuthentication } from '../Login/UseAuth';
+import logo from '../../resources/logo2.png'
 
 const Header = (props) => {
     const auth = useAuthentication();
     return (
-        <Nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <Nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <Container>
                 <Link to="/" class="navbar-brand">
-                    <img src="./logo2.png" alt=""/>
+                    <img src={logo} alt=""/>
                 </Link>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,9 +23,9 @@ const Header = (props) => {
                         <Link class="nav-link mt-2"><FontAwesomeIcon icon={faShoppingCart} /> <span className="text-danger">{props.cart.length}</span> </Link>
                         {
                             auth.user ?
-                            <Link to="/" className="nav-link mt-2">{auth.user.displayName}</Link> 
+                            <Link to="/" className="nav-link mt-2"><FontAwesomeIcon icon={faUser} /> {auth.user.displayName}</Link> 
                             :
-                            <Link to="/login" class="nav-item nav-link" >
+                            <Link to="/login" class="nav-item nav-link mt-2 text-danger" >
                                 Log In
                             </Link>
                         }

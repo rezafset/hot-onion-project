@@ -1,10 +1,14 @@
 .login-container{
     display:flex;
     justify-content: center;
-    margin-top: 150px;
 }
 .login{
-    width: 400px;
+    width: 380px;
+}
+.login .image{
+    height: 90px;
+    width: 200px;
+    margin: auto;
 }
 .error{
     color: red;

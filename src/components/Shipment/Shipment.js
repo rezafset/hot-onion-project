@@ -4,6 +4,7 @@ import {getDatabaseCart, removeFromDatabaseCart} from '../../utilities/databaseM
 import fakeData from '../../fakeData';
 import FoodOrder from '../FoodOrder/FoodOrder';
 import { useAuthentication } from '../Login/UseAuth';
+import './Shipment.css';
 
 const Shipment = () => {
     const [cart, setCart] = useState([])
@@ -41,7 +42,7 @@ const Shipment = () => {
     return (
         <Container>
             <Row>
-                <Col md={4} className="my-5 pt-5">
+                <Col md={5} className="my-5 pt-5">
                     <h2 className="text-center">Delivery Detail</h2>
                     <Form className="pt-3">
                         <Form.Group controlId="formBasicUsername">
@@ -62,18 +63,19 @@ const Shipment = () => {
                         </Button>
                     </Form>
                 </Col>
-                <Col md={7} className="ml-5 pl-5 py-4">
-                    <h5>From <b>Chawkbazar</b></h5>
-                    <p>Arriving in 20-30 min</p>
-                    <p>Post office goli</p>
-                    {
-                        cart.map(fd=> <FoodOrder removeFood={removeFood} key={fd.key} food={fd} cart={cart}></FoodOrder>)
-                    }
-                    <p>Subtotal : ${formatNumber(total)}</p>
-                    <p>Tax : ${formatNumber(tax)}</p>
-                    <p>Delivery Fee : ${formatNumber(deliveryFee)}</p>
-                    <h5>Total : ${formatNumber(grandTotal)}</h5>
-                    <Button variant="danger" className="btn">Place Order</Button> 
+                <Col md={7} className="d-flex justify-content-center py-4">
+                    <div className="">
+                        <p>From <b>Chawkbazar</b>, post office goli. Arriving in 20-30 min.</p>
+            
+                        {
+                            cart.map(fd=> <FoodOrder removeFood={removeFood} key={fd.key} food={fd} cart={cart}></FoodOrder>)
+                        }
+                        <p>Subtotal : ${formatNumber(total)}</p>
+                        <p>Tax : ${formatNumber(tax)}</p>
+                        <p>Delivery Fee : ${formatNumber(deliveryFee)}</p>
+                        <h5>Total : ${formatNumber(grandTotal)}</h5>
+                        <Button variant="danger" className="btn-place-order mt-2">Place Order</Button> 
+                    </div>
                 </Col>
             </Row>
         </Container>

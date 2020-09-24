@@ -5,7 +5,6 @@ import firebaseConfig from './firebase';
 import { useState, createContext } from "react";
 import { useContext } from 'react';
 import { useEffect } from 'react';
-import { Route, Redirect } from "react-router-dom";
 
 firebase.initializeApp(firebaseConfig);
 
@@ -27,10 +26,10 @@ const Auth = () => {
                 window.history.back(); 
                 return response.user;
         })
-        .catch(err => {
-            console.log(err.message);
+        .catch(error => {
+            console.log(error.message);
             setUser(null);
-            return err.message;
+            return error.message;
         })
     };
 
@@ -56,7 +55,7 @@ const Auth = () => {
     };
 
     useEffect(() => {
-        const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+        const currUser = firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 setUser(user);
             } 
@@ -64,7 +63,7 @@ const Auth = () => {
                 setUser(false);
             }
         });    
-        return () => unsubscribe();
+        return () => currUser();
     }, []);
 
     return{

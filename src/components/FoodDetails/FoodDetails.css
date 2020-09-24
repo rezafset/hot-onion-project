@@ -2,3 +2,31 @@
     height: 400px;
     width: 400px;
 }
+.main-btn{
+    border: 1px solid gray;
+    border-radius: 20px;
+    font-size: 18px;
+}
+.count-field{
+    width: 40px;
+    height: 30px;
+    border: none;
+    background: none;
+}
+.plus:focus{
+    outline: none;
+}
+.minus:focus{
+    outline: none;
+}
+.btn-type{
+    border: none;
+    background: none;
+}
+.plus{
+    color: red;
+    font-size: 20px;
+}
+.minus{
+    font-size: 20px;
+}

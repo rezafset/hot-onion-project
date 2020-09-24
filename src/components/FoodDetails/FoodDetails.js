@@ -19,6 +19,10 @@ const FoodDetails = (props) => {
         }
         setQuantity(newQuantity);
     }
+    const formatNumber = num =>{
+        const number = Number(num.toFixed(2));
+        return number;
+    }
     return (
         <Container className="my-5 pt-5">
             <Row>
@@ -26,20 +30,20 @@ const FoodDetails = (props) => {
                     <h1 className="py-2">{name}</h1>
                     <p>{foodDescription}</p>
                     <div className="d-flex">
-                        <h3>{price*quantity.toFixed(2)}</h3>
-                        <div className="btn">
-                            <button className='minus-btn' onClick={()=>handleQuantity('-')}>-</button>
-                            <input className='counter-field' type='text' value={quantity} disabled></input>
-                            <button className='plus-btn' onClick={()=>handleQuantity('+')}>+</button>
+                        <h3>${formatNumber(price*quantity)}</h3>
+                        <div className="main-btn p-1 ml-md-5">
+                            <button className="btn-type minus" onClick={()=>handleQuantity('-')}>-</button>
+                            <input className="count-field text-center" type='text' value={quantity} disabled></input>
+                            <button className= "btn-type plus" onClick={()=>handleQuantity('+')}>+</button>
                         </div>
                     </div>
-                    <p className="pt-3">Quantity: {quantity}</p>
+                    <p className="pt-3">Selected Item: {quantity}</p>
                     <div className="d-flex pt-3">
                         <Link to="/">
                             <Button className="btn btn-danger"> <FontAwesomeIcon icon={faCartArrowDown} /> Add</Button>
                         </Link>
                         <Link to="/shipment">
-                            <Button className="btn btn-danger ml-4"><FontAwesomeIcon icon={faShippingFast} />Shipment</Button>
+                            <Button className="btn btn-danger ml-4"><FontAwesomeIcon icon={faShippingFast} /> Shipment</Button>
                         </Link>
                     </div>
                 </Col>

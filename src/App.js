@@ -16,6 +16,10 @@ import FoodInfo from './components/FoodInfo/FoodInfo';
 import Shipment from './components/Shipment/Shipment';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { AuthContextProvider } from './components/Login/UseAuth';
+import Banner from './components/Banner/Banner';
+import ChooseUs from './components/ChooseUs/ChooseUs';
+import Footer from './components/Footer/Footer';
+import FoodDelivery from './components/FoodDelivery/FoodDelivery';
 
 function App() {
 
@@ -25,15 +29,12 @@ function App() {
   useEffect(()=>{
     const saveCart = getDatabaseCart();
     const foodKey = Object.keys(saveCart);
-    if(foods.length){
       const foodItem = foodKey.map(key=>{
         const food = fakeData.find(fd => fd.key === key);
         food.quantity = saveCart[key];
         return food;
       })
       setCart(foodItem);
-    }
-
   }, [])
   
   const handleFoodCart = (food) =>{
@@ -59,12 +60,15 @@ function App() {
       <Router>
         <Switch>
           <Route path="/login">
-          <Header cart ={cart}></Header>
+            <Header cart ={cart}></Header>
             <Login></Login>
           </Route>
           <Route exact path="/">
               <Header cart ={cart}></Header>
+              <Banner></Banner>
               <FoodContainer handleFoodCart={handleFoodCart} cart={cart}></FoodContainer>
+              <ChooseUs></ChooseUs>
+              <Footer></Footer>
           </Route>
           <Route path="/food/:foodKey">
               <Header cart ={cart}></Header>
@@ -74,6 +78,10 @@ function App() {
             <Header cart={cart}></Header>
             <Shipment></Shipment>
           </PrivateRoute>
+          <Route path="/delivery">
+            <Header cart ={cart}></Header>
+            <FoodDelivery></FoodDelivery>
+          </Route>
         </Switch>
       </Router>
     </AuthContextProvider>

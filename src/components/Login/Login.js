@@ -1,6 +1,5 @@
 import React from 'react';
 import useAuth from './UseAuth';
-import { Link } from 'react-router-dom';
 import './Login.css';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
@@ -25,21 +24,21 @@ const Login = () => {
         
     }
     return (
-        <Container className="login-container">
-            <Card className="login">
-                <Card.Img variant="top" src={image} />
+        <Container className="login-container mt-5">
+            <Card className="login p-4">
+                <Card.Img variant="top" className="image" src={image} />
                 {
                 currentUser ? 
-                <Form onSubmit={handleSubmit(onSubmit)} className="py-5">
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     {
                     auth.user != null && <p className="error text-danger">{auth.user.error}</p>
                     }
                     <Form.Group>
-                        <Form.Control name="email" className="form-control" ref={register({ required: true })} placeholder="Email"/>
+                        <Form.Control name="email"  ref={register({ required: true })} placeholder="Email"/>
                         {errors.email && <span className="error">Email is required</span>}
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="password" name="password" className="form-control" ref={register({ required: true })} placeholder="Password" />
+                        <Form.Control type="password" name="password"  ref={register({ required: true })} placeholder="Password" />
                         {errors.password && <span className="error">Password is required</span>}
                     </Form.Group>
                     
@@ -56,19 +55,19 @@ const Login = () => {
                     auth.user != null && <p className="text-danger">{auth.user.error}</p>
                     }
                     <Form.Group>
-                        <Form.Control name="name" className="form-control" ref={register({ required: true })} placeholder="Name" />
+                        <Form.Control name="name"  ref={register({ required: true })} placeholder="Name" />
                         {errors.name && <span className="error">Name is required</span>}
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control name="email" className="form-control" ref={register({ required: true })} placeholder="Email"/>
+                        <Form.Control name="email"  ref={register({ required: true })} placeholder="Email"/>
                         {errors.email && <span className="error">Email is required</span>}
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="password" name="password" className="form-control" ref={register({ required: true })} placeholder="Password" />
+                        <Form.Control type="password" name="password"  ref={register({ required: true })} placeholder="Password" />
                         {errors.password && <span className="error">Password is required</span>}
                     </Form.Group>
                     <Form.Group>
-                        <Form.Control type="password" name="confirm_password" className="form-control" ref={register({
+                        <Form.Control type="password" name="confirm_password"  ref={register({
                         validate: (value) => value === watch('password')
                         })} placeholder="Confirm Password" />
                         {errors.confirm_password && <span className="error">Passwords don't match.</span>}
