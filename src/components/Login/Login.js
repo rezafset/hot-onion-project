@@ -1,5 +1,5 @@
 import React from 'react';
-import useAuth from './UseAuth';
+import { useAuthentication } from './UseAuth';
 import './Login.css';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
@@ -9,7 +9,7 @@ import image from '../../resources/logo2.png';
 const Login = () => {
     const [currentUser , setCurrentUser] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
-    const auth = useAuth();
+    const auth = useAuthentication();
     const onSubmit = data => { 
         if(currentUser){
             if(data.email && data.password){

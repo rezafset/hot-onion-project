@@ -13,16 +13,16 @@ import { Link } from 'react-router-dom';
 
 const ChooseUs = () => {
     return (
-        <Container>
+        <Container className="py-4">
             <Row>
                 <Col md={6}>
                     <h2>Why Choose Us</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vero saepe! Architecto nihil numquam aut. Nobis non dicta obcaecati culpa pariatur. Non eaque optio ab inventore pariatur sequi. Veritatis, nobis!</p>
+                    <p className="py-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, vero saepe! Architecto nihil numquam aut. Nobis non dicta obcaecati culpa pariatur.</p>
                 </Col>
             </Row>
-            <Row>
-                <CardDeck className="py-4">
-                    <Card >
+            <Row>                
+                <Col md={4}>
+                    <Card className="cart-container">
                         <Card.Img className="card-img" variant="top" src={fastDelivery} />
                         <Card.Body>
                             <Card.Title> <img src={bus} alt=""/> Fast Delivery</Card.Title>
@@ -49,7 +49,9 @@ const ChooseUs = () => {
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="cart-container">
                         <Card.Img className="card-img" variant="top" src={notification} />
                         <Card.Body>
                             <Card.Title> <img src={bell} alt=""/> A Good Auto Responder</Card.Title>
@@ -77,7 +79,9 @@ const ChooseUs = () => {
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                    <Card>
+                </Col>
+                <Col md={4}>
+                    <Card className="cart-container">
                         <Card.Img className="card-img" variant="top" src={homeDelivery} />
                         <Card.Body>
                             <Card.Title> <img src={car} alt=""/> Home Delivery</Card.Title>
@@ -104,7 +108,7 @@ const ChooseUs = () => {
                             </Card.Text>
                         </Card.Body>
                     </Card>
-                </CardDeck>
+                </Col>               
             </Row>
         </Container>
     );

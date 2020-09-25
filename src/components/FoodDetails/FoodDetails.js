@@ -15,7 +15,7 @@ const FoodDetails = (props) => {
             newQuantity = currentQuantity + 1
         }
         else{
-            newQuantity = currentQuantity >1 ? currentQuantity - 1: currentQuantity;
+            newQuantity = currentQuantity > 1 ? currentQuantity - 1 : currentQuantity;
         }
         setQuantity(newQuantity);
     }

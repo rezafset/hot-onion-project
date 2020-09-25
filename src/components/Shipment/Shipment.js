@@ -5,10 +5,16 @@ import fakeData from '../../fakeData';
 import FoodOrder from '../FoodOrder/FoodOrder';
 import { useAuthentication } from '../Login/UseAuth';
 import './Shipment.css';
+import { useHistory } from 'react-router-dom';
 
 const Shipment = () => {
     const [cart, setCart] = useState([])
     const auth = useAuthentication();
+
+    let history = useHistory()
+    const handlePlaceOrder = () =>{
+        history.push("/delivery");
+    }
 
     useEffect(()=>{
         const saveCart = getDatabaseCart();
@@ -30,7 +36,7 @@ const Shipment = () => {
     }
 
     const total = cart.reduce((total, food) => total + food.price * food.quantity, 0)
-    console.log(total);
+    // console.log(total);
     const tax = total/10;
     const deliveryFee = total/8;
     const grandTotal = total + tax + deliveryFee;
@@ -74,7 +80,7 @@ const Shipment = () => {
                         <p>Tax : ${formatNumber(tax)}</p>
                         <p>Delivery Fee : ${formatNumber(deliveryFee)}</p>
                         <h5>Total : ${formatNumber(grandTotal)}</h5>
-                        <Button variant="danger" className="btn-place-order mt-2">Place Order</Button> 
+                        <Button onClick={handlePlaceOrder} variant="danger" className="btn-place-order mt-3 btn-block">Place Order</Button> 
                     </div>
                 </Col>
             </Row>

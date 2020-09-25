@@ -12,7 +12,7 @@ const Footer = () => {
                     <Col md={7}>
                         <img className="footer-img" src={footerImage} alt=""/>
                     </Col>
-                    <Col className="bg-dark" md={3}>
+                    <Col className="my-sm-4 my-lg-0" md={3}>
                         <ul class="list-group">
                             <Link className="text-light href">About Online Food</Link>
                             <Link className="text-light href">Read Our Blog</Link>

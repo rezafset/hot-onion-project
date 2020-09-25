@@ -8,7 +8,7 @@ import './FoodContainer.css';
 const FoodContainer = (props) => {
     // console.log(fakeData);
     const [foods, setFoods] = useState(fakeData);
-    const [cart, setCart] = useState(fakeData);
+    // const [cart, setCart] = useState(fakeData);
     const [selectedFood, setSelectedFood] = useState("lunch");
     const setectedFoodItem = foods.filter(food=> food.category === selectedFood)
     return (
