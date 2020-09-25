@@ -26,11 +26,7 @@ const Auth = () => {
                 window.history.back(); 
                 return response.user;
         })
-        .catch(error => {
-            console.log(error.message);
-            setUser(null);
-            return error.message;
-        })
+        .catch(err=> setUser({error: err.message}))
     };
 
     const createUser = (email, password, name) => {

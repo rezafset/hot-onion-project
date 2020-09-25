@@ -5,11 +5,13 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Button, Card, Container, Form } from 'react-bootstrap';
 import image from '../../resources/logo2.png';
+import { useHistory, useLocation } from 'react-router-dom';
 
 const Login = () => {
     const [currentUser , setCurrentUser] = useState(false);
     const { register, handleSubmit, watch, errors } = useForm();
     const auth = useAuthentication();
+
     const onSubmit = data => { 
         if(currentUser){
             if(data.email && data.password){
@@ -31,7 +33,7 @@ const Login = () => {
                 currentUser ? 
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     {
-                    auth.user != null && <p className="error text-danger">{auth.user.error}</p>
+                        auth.user != null  && <p className="error text-danger">{auth.user.error}</p>
                     }
                     <Form.Group>
                         <Form.Control name="email"  ref={register({ required: true })} placeholder="Email"/>
